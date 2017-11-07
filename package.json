@@ -3,5 +3,12 @@
   "version": "1.0.0",
   "main": "index.js",
   "author": "Robert Shaw <r.shaw1@yahoo.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server-express": "^1.2.0",
+    "body-parser": "^1.18.2",
+    "express": "^4.16.2",
+    "graphql": "^0.11.7",
+    "graphql-tools": "^2.7.2"
+  }
 }
