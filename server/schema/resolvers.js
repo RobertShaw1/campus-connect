@@ -17,4 +17,11 @@ module.exports = {
   Query: {
     allCampuses: () => campuses,
   },
+  Mutation: {
+    createCampus: (_, data) => {
+      const newCampus = Object.assign({id: campuses.length - 1}, data);
+      campuses.push(newCampus);
+      return newCampus;
+    },
+  },
 };

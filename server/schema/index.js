@@ -15,6 +15,10 @@ const typeDefs = `
   type Query {
     allCampuses: [Campus!]!
   }
+
+  type Mutation {
+    createCampus(name: String!, imgURL: String, description: String): Campus
+  }
 `;
 
 //Generate Schema object from the types definitons and resolvers
