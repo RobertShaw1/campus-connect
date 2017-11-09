@@ -3,13 +3,21 @@
 const {makeExecutableSchema} = require('graphql-tools');
 const resolvers = require('./resolvers');
 
-//Type definitions go here
+//Type definitions
 const typeDefs = `
   type Campus {
     id: ID!
     name: String!
     imgURL: String
     description: String
+    students: [Student]!
+  }
+
+  type Student {
+    id: ID!
+    name: String!
+    email: String!
+    assignedCampus: String!
   }
 
   type Query {
