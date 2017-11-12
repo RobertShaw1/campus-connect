@@ -22,6 +22,7 @@ const typeDefs = `
 
   type Query {
     allCampuses: [Campus!]!
+    allStudents: [Student!]!
   }
 
   type Mutation {
