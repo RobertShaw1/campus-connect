@@ -1,27 +1,17 @@
-const campuses = [
-  {
-    id: 1,
-    name: 'GraphQL',
-    imgURL: 'http://graphql.org/',
-    description: 'The Best Query Language',
-  },
-  {
-    id: 2,
-    name: 'Apollo',
-    imgURL: 'http://dev.apollodata.com',
-    description: 'Awesome GraphQL Client',
-  },
-];
+const {Campus, Student} = require('../db/models');
+
+const campuses = Campus.findAll();
+const students = Student.findAll();
 
 module.exports = {
   Query: {
     allCampuses: () => campuses,
+    allStudents: () => students,
   },
   Mutation: {
     createCampus: (_, data) => {
-      const newCampus = Object.assign({id: campuses.length - 1}, data);
-      campuses.push(newCampus);
-      return newCampus;
+      Campus.create({...data})
+        .then(newCampus => newCampus)
     },
   },
 };
