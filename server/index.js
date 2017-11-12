@@ -1,7 +1,5 @@
 'use strict'
 
-const express = require('express');
-
 // This package automagically parses JSON requests
 const bodyParser = require('body-parser');
 
@@ -9,10 +7,9 @@ const bodyParser = require('body-parser');
 // for you, based on your schema
 const {graphqlExpress, graphiqlExpress} = require('apollo-server-express');
 
-
+const app = require('express')();
 const schema = require('./schema');
 
-const app = express();
 app.use('/graphql', bodyParser.json(), graphqlExpress({schema}));
 
 app.use('/graphiql', graphiqlExpress({
