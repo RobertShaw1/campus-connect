@@ -1,7 +1,7 @@
 'use strict'
 const chalk = require('chalk');
 
-// run our models file (makes all associations for our Sequelize objects)
+// register our models
 require('./models')
 const db = (require('./db'))
 
