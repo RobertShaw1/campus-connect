@@ -10,7 +10,7 @@ module.exports = {
   },
   Mutation: {
     createCampus: (_, data) => {
-      Campus.create({...data})
+      return Campus.create({...data})
         .then(newCampus => newCampus)
     },
   },
