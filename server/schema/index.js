@@ -23,6 +23,8 @@ const typeDefs = `
   type Query {
     allCampuses: [Campus!]!
     allStudents: [Student!]!
+    singleStudent(id: Int!): Student!
+    singleCampus(id: Int!): Campus!
   }
 
   type Mutation {
