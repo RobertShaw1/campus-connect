@@ -17,7 +17,7 @@ const typeDefs = `
     id: ID!
     name: String!
     email: String!
-    assignedCampus: Campus!
+    assignedCampus: String!
   }
 
   type Query {
@@ -28,7 +28,16 @@ const typeDefs = `
   }
 
   type Mutation {
-    createCampus(name: String!, imgURL: String, description: String): Campus
+    createCampus(
+      name: String!,
+      imgURL: String,
+      description: String,
+    ): Campus!
+    createStudent(
+      name: String!,
+      email: String!,
+      assignedCampus: String!,
+    ): Student!
   }
 `;
 

@@ -15,5 +15,11 @@ module.exports = {
       return Campus.create({...data})
         .then(newCampus => newCampus)
     },
+    createStudent: (_, data) => {
+      // TODO: although we'll be able to control the user input from the GUI for the assignedCampus
+      // we need our server to throw an error if the student's assignedCampus does not exist
+      return Student.create({...data})
+        .then(newStudent => newStudent)
+    },
   },
 };
