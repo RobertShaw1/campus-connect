@@ -38,6 +38,9 @@ const typeDefs = `
       email: String!,
       assignedCampus: String!,
     ): Student!
+    deleteStudent(
+      id: Int!
+    ): Student!
   }
 `;
 

@@ -21,5 +21,13 @@ module.exports = {
       return Student.create({...data})
         .then(newStudent => newStudent)
     },
+    deleteStudent: (_, {id}) => {
+      return Student.findById(id)
+      .then(student => {
+        let deletedStudent = student;
+        student.destroy();
+        return deletedStudent;
+      })
+    }
   },
 };
