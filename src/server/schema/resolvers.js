@@ -10,6 +10,13 @@ module.exports = {
     singleStudent: (_, {id}) => Student.findById(id),
     singleCampus: (_, {id}) => Campus.findById(id),
   },
+  Campus: {
+    students: ({name}) => Student.findAll({
+      where: {
+        assignedCampus: name,
+      }
+    })
+  },
   Mutation: {
     createCampus: (_, data) => {
       return Campus.create({...data})
