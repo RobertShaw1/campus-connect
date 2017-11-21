@@ -2,8 +2,9 @@
 const chalk = require('chalk');
 
 // register our models
-require('./models')
-const db = (require('./db'))
+require('./models');
+const db = require('./db');
+const name = require('../../package.json').name;
 
 // sync the db, creating it if necessary
 function sync(force=false, retries=0, maxRetries=5) {
