@@ -5,7 +5,7 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon ./server"
+    "server": "nodemon ./src/server"
   },
   "dependencies": {
     "apollo-server-express": "^1.2.0",

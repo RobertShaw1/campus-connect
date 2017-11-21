@@ -1,6 +1,6 @@
-const db = require('./server/db/db');
-const Student = require('./server/db/models/student');
-const Campus = require('./server/db/models/campus');
+const db = require('./src/server/db/db');
+const Student = require('./src/server/db/models/student');
+const Campus = require('./src/server/db/models/campus');
 const Promise = require('bluebird');
 
 const campuses = [

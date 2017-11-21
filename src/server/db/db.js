@@ -2,7 +2,7 @@
 const debug = require('debug')('sql');
 const chalk = require('chalk');
 const Sequelize = require('sequelize');
-const dbName = require('../../package.json').name;
+const dbName = require('../../../package.json').name;
 
 const name = process.env.DATABASE_NAME || dbName;
 const connectionString = process.env.DATABASE_connectionString || `postgres://localhost:5432/${name}`;
