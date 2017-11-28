@@ -13,4 +13,5 @@ If you have both Node and PostgreSQL installed then you should be able to:
 1. fork/clone this repo
 2. Install all dependencies with your preferred package manager
     *  We recommend using [yarn](https://yarnpkg.com/en/)
-3. After all dependencies have been installed run the script `yarn start-dev`
+3. After all dependencies have been installed run `node seed` to seed the database
+4. Then run the script `yarn start-dev`
