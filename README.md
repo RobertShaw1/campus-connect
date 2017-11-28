@@ -4,6 +4,7 @@ A basic GraphQL CRUD app, that demos simple operations for university management
 ### This is a Fullstack JavaScript application
 Server | Client
 ------------ | -------------
+[GraphQL](http://graphql.org/) | [Apollo](https://www.apollographql.com/docs/react/)
 [Node.js](https://nodejs.org/en/) | [React](https://github.com/facebook/react/)
 [PostgreSQL](https://www.postgresql.org/download/)| [Redux](https://github.com/reactjs/redux)
 [Sequelize](http://docs.sequelizejs.com/) | [Redux-First Router](https://github.com/faceyspacey/redux-first-router)
