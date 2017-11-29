@@ -9,7 +9,7 @@
     "build-client-watch": "webpack -w",
     "server": "nodemon ./src/server",
     "start-dev": "yarn build-client-watch & yarn start-server",
-    "start-server": "NODE_ENV='development' nodemon server -e html,js,scss --ignore public",
+    "start-server": "NODE_ENV='development' yarn server -e html,js,scss --ignore public",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -25,6 +25,7 @@
     "pg": "^7.4.0",
     "pg-native": "^2.2.0",
     "react": "^16.1.1",
+    "react-apollo": "^2.0.1",
     "react-dom": "^16.1.1",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
