@@ -17,7 +17,7 @@ const typeDefs = `
     id: ID!
     name: String!
     email: String!
-    assignedCampus: String
+    campus: Campus
   }
 
   type Query {
