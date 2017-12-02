@@ -4,8 +4,15 @@ const chalk = require('chalk');
 const Sequelize = require('sequelize');
 const dbName = require('../../../package.json').name;
 
-const name = process.env.DATABASE_NAME || dbName;
-const connectionString = process.env.DATABASE_connectionString || `postgres://localhost:5432/${name}`;
+let connectionString;
+
+if(process.env.NODE_ENV === 'test') {
+  console.log(chalk.magenta('In test environment...'));
+  connectionString = `postgres://localhost:5432/${dbName}-test`;
+} else {
+  connectionString = process.env.DATABASE_connectionString || `postgres://localhost:5432/${dbName}`;
+  
+}
 
 console.log(chalk.yellow(`Opening database connection to ${connectionString}`));
 

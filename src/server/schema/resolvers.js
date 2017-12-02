@@ -3,7 +3,7 @@ const {Campus, Student} = require('../db/models');
 const campuses = Campus.findAll();
 const students = Student.findAll({
   include: [Campus]
-});
+}).then(allStudents => allStudents);
 
 module.exports = {
   Query: {
