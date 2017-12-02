@@ -9,7 +9,8 @@
     "build-client-watch": "webpack -w",
     "server": "nodemon ./src/server",
     "start-dev": "yarn build-client-watch & yarn start-server",
-    "start-server": "NODE_ENV='development' nodemon server -e html,js,scss --ignore public"
+    "start-server": "NODE_ENV='development' nodemon server -e html,js,scss --ignore public",
+    "test-server": "NODE_ENV='test' mocha ./src/server/test --recursive --watch"
   },
   "dependencies": {
     "apollo-server-express": "^1.2.0",
@@ -28,6 +29,9 @@
     "babel-loader": "^7.1.2",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
+    "chai": "^4.1.2",
+    "chai-as-promised": "^7.1.1",
+    "mocha": "^4.0.1",
     "webpack": "^3.8.1",
     "webpack-livereload-plugin": "^1.0.0"
   }
