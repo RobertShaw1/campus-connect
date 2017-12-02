@@ -15,9 +15,7 @@ const Student = db.define('student', {
       isEmail: true,
     }
   },
-  assignedCampus: {
-    type: Sequelize.STRING
-  },
 })
+
 
 module.exports = Student;
