@@ -1,7 +1,14 @@
+// NODE Modules
+const Promise = require('bluebird');
+
+// LOCAL Modules
 const db = require('./src/server/db/db');
 const Student = require('./src/server/db/models/student');
 const Campus = require('./src/server/db/models/campus');
-const Promise = require('bluebird');
+
+// Create associations
+Student.belongsTo(Campus);
+Campus.hasMany(Student);
 
 const campuses = [
   {
@@ -21,98 +28,74 @@ const campuses = [
   },
 ];
 
-
-const id = () => Math.round(Math.random() * (campuses.length - 1));
-// const id = () => 0;
+const createRandomCampusId = () => Math.ceil(Math.random() * (campuses.length));
 
 const students = [{
   name: 'Cody',
   email: 'cody@cody.com',
-  assignedCampus: campuses[id()].name
 }, {
   name: 'Ben',
   email: 'ben@ben.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Star',
   email: 'star@star.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Batman',
   email: 'batman@batman.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Elliott',
   email: 'elliot@elliot.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Fira',
   email: 'fira@fira.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Henry',
   email: 'henry@henry.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Marcy',
   email: 'marcy@marcy.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Milton',
   email: 'milton@milton.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Murphy',
   email: 'murphy@murphy.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Raffi',
   email: 'raffi@raffi.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Tulsi',
   email: 'tulsi@tulsi.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Pork Chop',
   email: 'porkchop@porkchop.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Ribs',
   email: 'ribs@ribs.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Stacey',
   email: 'stacey@stacey.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'JD',
   email: 'jd@jd.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Slim',
   email: 'slim@slim.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Yoda',
   email: 'yoda@yoda.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Mark',
   email: 'mark@mark.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Larry',
   email: 'larry@larry.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Lisa',
   email: 'lisa@lisa.com',
-  assignedCampus: campuses[id()].name,
 }, {
   name: 'Odie',
   email: 'odie@odie.com',
-  assignedCampus: campuses[id()].name,
 }];
 
 
@@ -123,8 +106,13 @@ const seed = () => (
   }))
   .then(() =>
     Promise.all(students.map(student => {
-      console.log(student)
-      return Student.create(student)
+      console.log(student)      
+      return (
+        Student.create(student)
+        .then(student => {
+          student.setCampus(createRandomCampusId());
+        })
+      )
     }))
   )
 )
@@ -137,8 +125,10 @@ const main = () => {
       return seed();
     })
     .catch(err => {
-      console.log('Error while seeding');
-      console.log(err.stack);
+      console.log(`
+      \n*************************\n!!!ERROR WHILE SEEDING!!!\n*************************
+      `);
+      console.error(err.stack, '\n');
     })
     .then(() => {
       db.close();
