@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/client/index.js',
@@ -15,6 +16,16 @@ module.exports = {
       loader: 'babel-loader',
     }],
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+      output: {
+        comments: false,
+      },
+    }),
+  ],
   resolve: {
     modules: [
       'node_modules',
