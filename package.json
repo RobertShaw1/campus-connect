@@ -10,7 +10,7 @@
     "server": "nodemon ./src/server",
     "test-server": "NODE_ENV='test' mocha ./src/server/test --recursive --watch",
     "start-server": "NODE_ENV='development' yarn server -e html,js,scss --ignore public",
-    "start-dev": "yarn build-client-watch & yarn start-server",
+    "start-dev": "yarn webpack & yarn start-server",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
