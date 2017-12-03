@@ -1,13 +1,11 @@
 'use strict';
-const LiveReloadPlugin = require('webpack-livereload-plugin');
-const isDev = process.env.NODE_ENV === 'development';
-const webpack = require('webpack');
 const path = require('path');
+const webpack = require('webpack');
 
 module.exports = {
   entry: './src/client/index.js',
   output: {
-    path: path.resolve(__dirname, 'bin'),
+    path: path.resolve(__dirname, 'public'),
     filename: 'app.bundle.js'
   },
   module: {
@@ -16,11 +14,18 @@ module.exports = {
       include: path.resolve(__dirname, 'src/client'),
       exclude: /(node_modules|bower_components)/,
       loader: 'babel-loader',
-      options: {
-        presets: ['env'],
-      }
     }],
   },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      compress: {
+        warnings: false,
+      },
+      output: {
+        comments: false,
+      },
+    }),
+  ],
   resolve: {
     modules: [
       'node_modules',
@@ -28,22 +33,6 @@ module.exports = {
     ],
     extensions: ['.js', '.jsx']
   },
-  devtool: 'source-map',
+  devtool: 'inline-source-map',
   context: __dirname,
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      // (the commons chunk name)
-    
-      filename: 'commons.js',
-      // (the filename of the commons chunk)
-    
-      minChunks: 3,
-      // (Modules must be shared between 3 entries)
-    }),
-    new LiveReloadPlugin({appendScriptTag: true}),
-  //   // When we're in development, we can use this handy live-reload plugin
-  //   // to refresh the page for us every time we make a change to our client-side
-  //   // files. It's like `nodemon` for the front end!
-  ],
 };

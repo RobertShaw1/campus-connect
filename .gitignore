@@ -1,3 +1,4 @@
 node_modules
 bin
 yarn.lock
+app.bundle.js
