@@ -57,7 +57,6 @@ module.exports = env => {
   const production = env.production;
 
   if(production) {
-    console.log('WE\'RE IN PRODUCTION!!!')
     config.plugins.push(UglifyJsPlugin)
     config.devtool = 'nosources-source-map';
   }
