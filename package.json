@@ -5,14 +5,13 @@
   "license": "MIT",
   "main": "index.js",
   "scripts": {
-    "build-client": "webpack",
-    "build-client-watch": "webpack -w",
     "server": "nodemon ./src/server",
     "test-server": "NODE_ENV='test' mocha ./src/server/test --recursive --watch",
-    "start-server": "NODE_ENV='development' yarn server -e html,js,scss --ignore public",
-    "start-dev": "yarn webpack & yarn start-server",
+    "start-server": "yarn server -e html,js,scss --ignore public",
+    "start-dev": "yarn webpack --env.development & yarn start-server",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "start-prod": "yarn webpack --env.production & yarn start-server"
   },
   "dependencies": {
     "apollo-server-express": "^1.2.0",
