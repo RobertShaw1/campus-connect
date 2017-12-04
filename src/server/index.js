@@ -15,6 +15,8 @@ app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath
 }));
 
+app.use(require('webpack-hot-middleware')(compiler));
+
 const PUBLIC_DIR = path.resolve(__dirname, '../../public');
 const PORT = 3000;
 
@@ -25,4 +27,3 @@ app.use(express.static(PUBLIC_DIR));
 app.listen(PORT, () => {
   console.log(`GraphQL server running on PORT ${PORT}!`)
 });
-
