@@ -10,7 +10,7 @@
     "server": "nodemon ./src/server",
     "test-server": "NODE_ENV='test' mocha ./src/server/test --recursive --watch",
     "start-server": "NODE_ENV='development' yarn server -e html,js,scss --ignore public",
-    "start-dev": "yarn build-client-watch & yarn start-server",
+    "start-dev": "yarn webpack & yarn start-server",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -48,6 +48,7 @@
     "chai-as-promised": "^7.1.1",
     "mocha": "^4.0.1",
     "webpack": "^3.8.1",
+    "webpack-hot-middleware": "^2.21.0",
     "webpack-livereload-plugin": "^1.0.0"
   }
 }
