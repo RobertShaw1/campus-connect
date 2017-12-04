@@ -7,8 +7,9 @@ const PUBLIC_DIR = path.resolve(__dirname, 'public');
 
 module.exports = {
   entry: [
-    './src/client/index.js',
     'webpack-hot-middleware/client',
+    'react-hot-loader/patch',
+    './src/client/index.js',
   ],
   output: {
     path: PUBLIC_DIR,

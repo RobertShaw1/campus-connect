@@ -1,5 +1,10 @@
 {
-  "presets": ["react", "env", "stage-2"]
+  "plugins": [ "react-hot-loader/babel" ],
+  "presets": [
+    "react",
+    ["env", {"modules": false}],
+    "stage-2"
+  ]
   /*
     Babel uses these "presets" to know how to transpile your Javascript code. Here's what we're saying with these:
       'react': teaches Babel to recognize JSX - a must have for React!
