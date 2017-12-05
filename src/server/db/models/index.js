@@ -10,7 +10,10 @@ const Campus = require('./campus');
 
 //-----> each association below should add campusId to the Student Model
 // http://docs.sequelizejs.com/manual/tutorial/associations.html
-Campus.hasMany(Student);
+Campus.hasMany(Student, {
+	onDelete: 'cascade', // remove all associated students
+	hooks: true,
+});
 Student.belongsTo(Campus);
 
 module.exports = {Student, Campus};
