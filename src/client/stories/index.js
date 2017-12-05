@@ -5,7 +5,13 @@ import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
-import Home from '../components/Home';
+import {
+  Home,
+  AllCampuses,
+  AllStudents,
+  SingleCampus,
+  SingleStudent,
+} from '../components';
 
 import '../../../public/index.css'
 
@@ -13,6 +19,14 @@ storiesOf('Welcome', module)
   .add('to Storybook', () => <Welcome showApp={linkTo('Button')} />)
   .add('Home', () => <Home />)
 
+storiesOf('Campuses', module)
+  .add('AllCampuses', () => <AllCampuses />)
+  .add('SingleCampus', () => <SingleCampus />)
+
+
+storiesOf('Students', module)
+  .add('AllStudents', () => <AllStudents />)
+  .add('SingleStudent', () => <SingleStudent />)
 
 storiesOf('Button', module)
   .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
