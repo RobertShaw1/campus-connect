@@ -3,12 +3,7 @@ const Promise = require('bluebird');
 
 // LOCAL Modules
 const db = require('./src/server/db/db');
-const Student = require('./src/server/db/models/student');
-const Campus = require('./src/server/db/models/campus');
-
-// Create associations
-Student.belongsTo(Campus);
-Campus.hasMany(Student);
+const {Campus, Student} = require('./src/server/db/models');
 
 const campuses = [
   {
