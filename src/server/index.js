@@ -24,6 +24,7 @@ app.use('/', require('./api'));
 app.use(express.static(PUBLIC_DIR));
 
 
-app.listen(PORT, () => {
-  console.log(`GraphQL server running on PORT ${PORT}!`)
+app.listen(PORT, (err) => {
+  if(err) throw err;
+  console.log(`GraphQL server running on PORT ${PORT}!`);
 });
