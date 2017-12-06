@@ -22,6 +22,7 @@
     "graphql": "^0.11.7",
     "graphql-tools": "^2.7.2",
     "history": "^4.7.2",
+    "material-ui": "^1.0.0-beta.22",
     "nodemon": "^1.12.1",
     "pg": "^7.4.0",
     "pg-native": "^2.2.0",
