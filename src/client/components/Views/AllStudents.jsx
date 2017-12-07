@@ -1,10 +1,27 @@
 'use strict';
 
 import React from 'react';
+import {StudentCard} from '../materials';
+
+const styles = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'flex-start',
+  // alignItems: 'left',
+  flexWrap: 'wrap',
+}
 
 const AllStudents = () => {
   return (
-    <div>A View of All Students</div>
+    <div style={styles}>
+      <StudentCard />
+      <StudentCard />
+      <StudentCard />
+      <StudentCard />
+      <StudentCard />
+      <StudentCard />
+      <StudentCard />
+    </div>
   )
 }
 
