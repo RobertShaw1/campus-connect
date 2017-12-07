@@ -1,10 +1,17 @@
 import React from 'react';
+import {NavBar} from './materials';
+import {Home} from './index';
+
+const styles = {
+  display: 'flex',
+  flexDirection: 'column',
+  height: '100%',
+}
 
 const App = () => (
-  <div>
-    <h1>
-      Hello!
-    </h1>
+  <div style={styles}>
+    <NavBar />
+    <Home />
   </div>
 )
 
