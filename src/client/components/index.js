@@ -4,6 +4,8 @@
  * having to figure out which file they belong to!
  */
 
+
+export {default as App} from './App';
 export {default as Home} from './views/Home';
 export {default as AllCampuses} from './views/AllCampuses';
 export {default as AllStudents} from './views/AllStudents';

@@ -6,6 +6,7 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 import {
+  App,
   Home,
   AllCampuses,
   AllStudents,
@@ -13,11 +14,14 @@ import {
   SingleStudent,
 } from '../components';
 
-import '../../../public/index.css'
+import '../../../.storybook/storybook.css';
 
 storiesOf('Welcome', module)
   .add('to Storybook', () => <Welcome showApp={linkTo('Button')} />)
   .add('Home', () => <Home />)
+
+storiesOf('AppContainer', module)
+  .add('App', () => <App />)
 
 storiesOf('Campuses', module)
   .add('AllCampuses', () => <AllCampuses />)

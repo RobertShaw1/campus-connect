@@ -1,5 +1,4 @@
-/*the dynamically style font based on the machine*/
 html, body, #app {
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen-Sans,Unbuntu, Cantarell,Helvetica,Neue, sans-serif;
+  margin: 0;
 }
