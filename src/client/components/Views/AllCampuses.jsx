@@ -1,12 +1,23 @@
-
 'use strict';
 
 import React from 'react';
+import {CampusCard} from '../materials';
+
+const styles = {
+  display: 'flex',
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+}
 
 const AllCampuses = () => {
   return (
-    <div>A View of All Campuses</div>
+    <div style={styles}>
+      <CampusCard />
+      <CampusCard />
+      <CampusCard />
+    </div>
   )
 }
 
 export default AllCampuses;
+
