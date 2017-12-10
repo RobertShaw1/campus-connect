@@ -1,10 +1,16 @@
 /* eslint-disable flowtype/require-valid-file-annotation */
 
+// NODE MODULES
 import React, {Component} from 'react';
+import { connect } from 'react-redux'
 import PropTypes from 'prop-types';
+
 import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Tabs, { Tab } from 'material-ui/Tabs';
+
+// LOCAL MODULES
+import { goToPage } from '../../actions'
 
 const styles = theme => ({
   root: {
@@ -22,7 +28,7 @@ class NavBar extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, onClick } = this.props;
 
     return (
       <Paper className={classes.root}>
@@ -33,9 +39,9 @@ class NavBar extends Component {
           textColor="primary"
           centered
         >
-          <Tab label="Home" />
-          <Tab label="Campuses" />
-          <Tab label="Students" />
+          <Tab label="Home" onClick={() => onClick('HOME')} />
+          <Tab label="Campuses" onClick={() => onClick('CAMPUSES')}  />
+          <Tab label="Students" onClick={() => onClick('STUDENTS')}  />
         </Tabs>
       </Paper>
     );
@@ -46,4 +52,8 @@ NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(NavBar);
+const styledNavBar = withStyles(styles)(NavBar);
+const mapDispatch = {onClick: goToPage};
+
+
+export default connect(null, mapDispatch)(styledNavBar);
