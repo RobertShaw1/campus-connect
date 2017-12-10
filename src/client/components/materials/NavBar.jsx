@@ -3,20 +3,12 @@
 // NODE MODULES
 import React, {Component} from 'react';
 import { connect } from 'react-redux'
-import PropTypes from 'prop-types';
 
-import { withStyles } from 'material-ui/styles';
 import Paper from 'material-ui/Paper';
 import Tabs, { Tab } from 'material-ui/Tabs';
 
 // LOCAL MODULES
 import { goToPage } from '../../actions'
-
-const styles = theme => ({
-  root: {
-    flexGrow: 1,
-  },
-});
 
 class NavBar extends Component {
   state = {
@@ -28,10 +20,10 @@ class NavBar extends Component {
   };
 
   render() {
-    const { classes, onClick } = this.props;
+    const { onClick } = this.props;
 
     return (
-      <Paper className={classes.root}>
+      <Paper>
         <Tabs
           value={this.state.value}
           onChange={this.handleChange}
@@ -48,12 +40,6 @@ class NavBar extends Component {
   }
 }
 
-NavBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-const styledNavBar = withStyles(styles)(NavBar);
 const mapDispatch = {onClick: goToPage};
 
-
-export default connect(null, mapDispatch)(styledNavBar);
+export default connect(null, mapDispatch)(NavBar);
