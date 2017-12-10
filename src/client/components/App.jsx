@@ -1,6 +1,10 @@
+// NODE MODULES
 import React from 'react';
+import { connect } from 'react-redux';
+import universal from 'react-universal-component'
+
+//LOCAL MODULES
 import {NavBar} from './materials';
-import {Home} from './index';
 
 const styles = {
   display: 'flex',
@@ -8,11 +12,16 @@ const styles = {
   height: '100%',
 }
 
-const App = () => (
-  <div style={styles}>
-    <NavBar />
-    <Home />
-  </div>
-)
+const App = ({page}) => {
+  const View = universal(import(`./Views/${page}`));
+  return (
+    <div style={styles}>
+      <NavBar />
+      <View />
+    </div>
+  )
+}
 
-export default App;
+const mapState = ({page}) => ({page});
+
+export default connect(mapState)(App);
