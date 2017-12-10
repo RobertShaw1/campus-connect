@@ -4,8 +4,8 @@ const routesMap = {
   HOME: '/',
   CAMPUSES: '/campuses',
   STUDENTS: '/students',
-  SINGLECAMPUS: 'campuses/:id',
-  SINGLESTUDENT: 'students/:id',
+  SINGLECAMPUS: '/campuses/:id',
+  SINGLESTUDENT: '/students/:id',
 }
 
 export default routesMap;
