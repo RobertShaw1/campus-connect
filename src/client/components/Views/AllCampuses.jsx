@@ -11,9 +11,17 @@ const styles = {
   justifyContent: 'space-between',
 }
 
-const AllCampuses = ({client, allCampusesQuery}) => {
-  console.log('client = ', client)
-  const Campuses = allCampusesQuery.allCampuses;
+const AllCampuses = (props) => {
+  console.log('props:', props);
+  const { client, AllCampusesQuery } = props;
+  // console.log('client = ', client)
+  // console.log('allCampusesQuery = ', allCampusesQuery)
+  if (!AllCampusesQuery) {
+    return (
+      <div>Loading...</div>
+    )
+  }
+  const Campuses = AllCampusesQuery.allCampuses;
 
   return (
     <div style={styles}>
