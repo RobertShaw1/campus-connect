@@ -18,22 +18,22 @@ const styles = {
 };
 
 function SimpleMediaCard(props) {
-  const { classes } = props;
+  const { classes, name, img, description } = props;
   return (
     <div>
       <Card className={classes.card}>
         <CardMedia
           className={classes.media}
-          image="http://graphql.org/img/logo.svg"
+          // image="http://graphql.org/img/logo.svg"
+          image={img}
           title="Contemplative Reptile"
         />
         <CardContent>
           <Typography type="headline" component="h2">
-            Lizard
+            {name}
           </Typography>
           <Typography component="p">
-            Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+            {description}
           </Typography>
         </CardContent>
         <CardActions>

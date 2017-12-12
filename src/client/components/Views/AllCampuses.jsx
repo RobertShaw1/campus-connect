@@ -2,6 +2,8 @@
 
 import React from 'react';
 import {CampusCard} from '../materials';
+import {compose, graphql, withApollo} from 'react-apollo';
+import gql from 'graphql-tag';
 
 const styles = {
   display: 'flex',
@@ -9,15 +11,45 @@ const styles = {
   justifyContent: 'space-between',
 }
 
-const AllCampuses = () => {
+const AllCampuses = ({client, allCampusesQuery}) => {
+  console.log('client = ', client)
+  const Campuses = allCampusesQuery.allCampuses;
+
   return (
     <div style={styles}>
-      <CampusCard />
-      <CampusCard />
-      <CampusCard />
+      {
+        Campuses.map(campus => (
+          <CampusCard
+            key={campus.id}
+            name={campus.name}
+            img={campus.imgurl}
+            description={campus.description}
+          />
+        ))
+        // <CampusCard
+        //   name='New Camp'
+        //   img={`http://www.welcome-to-barcelona.com/wp-content/uploads/2012/01/Barcelona-New-Camp-Nou.jpg`}
+        //   description={'A description of a campus goes here'}
+        // />
+      }
     </div>
   )
 }
 
-export default AllCampuses;
+const ALL_CAMPUSES_QUERY = gql`
+  query AllCampusesQuery {
+    allCampuses {
+      id
+      name
+      imgURL
+      description
+    }
+  }
+`
+// export default withApollo(AllCampuses);
 
+export default compose(
+  withApollo,
+  graphql(ALL_CAMPUSES_QUERY, {name: 'AllCampusesQuery'}),
+  // connect()
+)(AllCampuses);
