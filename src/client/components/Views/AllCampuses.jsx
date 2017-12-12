@@ -16,7 +16,7 @@ const AllCampuses = (props) => {
   const { client, AllCampusesQuery } = props;
   // console.log('client = ', client)
   // console.log('allCampusesQuery = ', allCampusesQuery)
-  if (!AllCampusesQuery) {
+  if (AllCampusesQuery.loading) {
     return (
       <div>Loading...</div>
     )
