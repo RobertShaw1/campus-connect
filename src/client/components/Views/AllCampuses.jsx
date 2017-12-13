@@ -8,40 +8,30 @@ import gql from 'graphql-tag';
 const styles = {
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  justifyContent: 'space-around',
+  marginTop: '2rem',
 }
 
-const AllCampuses = (props) => {
-  console.log('props:', props);
-  const { client, AllCampusesQuery } = props;
-  // console.log('client = ', client)
-  // console.log('allCampusesQuery = ', allCampusesQuery)
+const AllCampuses = ({AllCampusesQuery}) => {
   if (AllCampusesQuery.loading) {
+    return <div>Loading...</div>
+  } else {
+    const {allCampuses} = AllCampusesQuery;
     return (
-      <div>Loading...</div>
+      <div style={styles}>
+        {
+          allCampuses.map(campus => (
+            <CampusCard
+              key={campus.id}
+              name={campus.name}
+              img={campus.imgURL}
+              description={campus.description}
+            />
+          ))
+        }
+      </div>
     )
   }
-  const Campuses = AllCampusesQuery.allCampuses;
-
-  return (
-    <div style={styles}>
-      {
-        Campuses.map(campus => (
-          <CampusCard
-            key={campus.id}
-            name={campus.name}
-            img={campus.imgurl}
-            description={campus.description}
-          />
-        ))
-        // <CampusCard
-        //   name='New Camp'
-        //   img={`http://www.welcome-to-barcelona.com/wp-content/uploads/2012/01/Barcelona-New-Camp-Nou.jpg`}
-        //   description={'A description of a campus goes here'}
-        // />
-      }
-    </div>
-  )
 }
 
 const ALL_CAMPUSES_QUERY = gql`
