@@ -8,12 +8,12 @@ const {Campus, Student} = require('./src/server/db/models');
 const campuses = [
   {
     name: 'GraphQL',
-    imgURL: 'http://graphql.org/',
+    imgURL: 'http://graphql.org/img/logo.svg',
     description: 'The Best Query Language',
   },
   {
     name: 'Apollo',
-    imgURL: 'http://dev.apollodata.com',
+    imgURL: 'http://www.discovermeteor.com/images/blog/apollo-logo.png',
     description: 'Awesome GraphQL Client',
   },
   {
