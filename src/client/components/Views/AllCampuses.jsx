@@ -1,23 +1,34 @@
 'use strict';
 
 import React from 'react';
+import {connect} from 'react-redux';
 import {CampusCard} from '../materials';
 
 const styles = {
   display: 'flex',
   flexDirection: 'row',
-  justifyContent: 'space-between',
+  justifyContent: 'space-around',
 }
 
-const AllCampuses = () => {
+const AllCampuses = props => {
+  const {allCampuses} = props;
+
   return (
     <div style={styles}>
-      <CampusCard />
-      <CampusCard />
-      <CampusCard />
+      {
+        allCampuses.map(campus =>(
+          <CampusCard
+            key={campus.id}
+            name={campus.name}
+            imgURL={campus.imgURL}
+            description={campus.description}
+          />
+        ))
+      }
     </div>
   )
 }
 
-export default AllCampuses;
+const mapState = ({allCampuses}) => ({allCampuses});
 
+export default connect(mapState)(AllCampuses);
