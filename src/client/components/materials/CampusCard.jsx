@@ -10,7 +10,7 @@ import Modal from './Modal';
 
 const styles = {
   card: {
-    maxWidth: 445,
+    minWidth: 445,
   },
   media: {
     height: 500,
@@ -20,27 +20,25 @@ const styles = {
 function SimpleMediaCard(props) {
   const { classes, name, img, description } = props;
   return (
-    <div>
-      <Card className={classes.card}>
-        <CardMedia
-          className={classes.media}
-          // image="http://graphql.org/img/logo.svg"
-          image={img}
-          title="Contemplative Reptile"
-        />
-        <CardContent>
-          <Typography type="headline" component="h2">
-            {name}
-          </Typography>
-          <Typography component="p">
-            {description}
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Modal text={'View Campus'} />
-        </CardActions>
-      </Card>
-    </div>
+    <Card className={classes.card}>
+      <CardMedia
+        className={classes.media}
+        // image="http://graphql.org/img/logo.svg"
+        image={img}
+        title="Contemplative Reptile"
+      />
+      <CardContent>
+        <Typography type="headline" component="h2">
+          {name}
+        </Typography>
+        <Typography component="p">
+          {description}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <Modal text={'View Campus'} />
+      </CardActions>
+    </Card>
   );
 }
 
