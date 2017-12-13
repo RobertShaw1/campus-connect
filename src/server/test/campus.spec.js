@@ -9,7 +9,7 @@
 
 const chai = require('chai');
 const chaiAsPromised = require('chai-as-promised');
-const {Campus} = require('../db/models');
+const { Campus } = require('../db/models');
 const db = require('../db/db');
 
 
@@ -20,7 +20,7 @@ const expect = chai.expect;
 describe('Campus model', () => {
   let mockCampus;
   beforeEach('sync model', () => {
-    return db.sync({force: true})
+    return db.sync({ force: true })
       .then(() => {
         mockCampus = Campus.build({
           name: 'testCampus',
@@ -29,11 +29,17 @@ describe('Campus model', () => {
         });
       })
   })
-
-  it('should require a name field', () => {
-    expect(mockCampus.name).to.equal('testCampus');
-  })
-  it('name field should be a string', () => {
+  it('should have a name', () => {
+    expect(mockCampus).to.have.property('name');
     expect(mockCampus.name).to.be.a('string');
+  })
+  it('should have an imgURL', () => {
+    console.log(mockCampus.imgURL)
+    expect(mockCampus).to.have.property('imgURL');
+    expect(mockCampus.imgURL).to.be.a('string');
+  })
+  it('should have a description', () => {
+    expect(mockCampus).to.have.property('description');
+    expect(mockCampus.description).to.be.a('string');
   })
 })

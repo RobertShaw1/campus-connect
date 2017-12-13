@@ -31,10 +31,20 @@ describe('Student model', () => {
       })
   })
 
-  it('should require a name field', () => {
-    expect(mockStudent.name).to.equal('testStudent');
+  it('should have a name', () => {
+    expect(mockStudent).to.have.property('name');
+    expect(mockStudent.name).to.be.a('string');
   })
-  it('name field should be a string', () => {
+  it('should have an email', () => {
+    expect(mockStudent).to.have.property('email');
+    expect(mockStudent.name).to.be.a('string');
+  })
+  it('should have a phone', () => {
+    expect(mockStudent).to.have.property('phone');
+    expect(mockStudent.name).to.be.a('string');
+  })
+  it('should have an imgURL', () => {
+    expect(mockStudent).to.have.property('imgURL');
     expect(mockStudent.name).to.be.a('string');
   })
 })
