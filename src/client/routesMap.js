@@ -7,8 +7,8 @@ const routesMap = {
   CAMPUSES: {
     path: '/campuses',
     thunk: async (dispatch, getState) => {
-      const campuses = await client.request(allCampusesQuery);
-      const action = {type: 'CAMPUSES_FETCHED', payload: campuses}
+      const {allCampuses} = await client.request(allCampusesQuery);
+      const action = {type: 'CAMPUSES_FETCHED', payload: {allCampuses}}
       return dispatch(action)
     }
   },
