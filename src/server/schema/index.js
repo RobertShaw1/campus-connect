@@ -17,6 +17,8 @@ const typeDefs = `
     id: ID!
     name: String!
     email: String!
+    phone: String
+    imgURL: String
     campus: Campus
   }
 
@@ -36,8 +38,10 @@ const typeDefs = `
     createStudent(
       name: String!,
       email: String!,
+      phone: String,
+      imgURL: String,
       assignedCampus: String!,
-    ): Student!
+    ): Student
     deleteStudent(
       id: Int!
     ): Student!

@@ -18,14 +18,16 @@ module.exports = {
         .then(newCampus => newCampus)
     },
     createStudent: (_, data) => {
-      const {name, email, assignedCampus} = data;
+      const {assignedCampus} = data;
       // TODO: although we'll be able to control the user input from the GUI for the assignedCampus
       // we need our server to throw an error if the student's assignedCampus does not exist
       Campus.findOne({
         where: {name: assignedCampus}
       })
       .then(campus => {
-        return Student.create({name, email})
+        const studentData = data;
+        delete studentData.assignedCampus;
+        return Student.create(studentData)
           .then(newStudent => newStudent.setCampus(campus))
       })
     },
