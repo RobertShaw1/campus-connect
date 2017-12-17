@@ -9,7 +9,8 @@ const styles = {
   display: 'flex',
   flexDirection: 'row',
   justifyContent: 'space-around',
-  marginTop: '2rem',
+  marginTop: '1rem',
+  flexWrap: 'wrap',
 }
 
 const AllCampuses = ({AllCampusesQuery}) => {
@@ -26,6 +27,7 @@ const AllCampuses = ({AllCampusesQuery}) => {
               name={campus.name}
               img={campus.imgURL}
               description={campus.description}
+              totalStudents={campus.totalStudents}
             />
           ))
         }
@@ -41,6 +43,7 @@ const ALL_CAMPUSES_QUERY = gql`
       name
       imgURL
       description
+      totalStudents
     }
   }
 `
