@@ -1,6 +1,6 @@
 const {Campus, Student} = require('../db/models');
 
-const campuses = Campus.findAll().map(foundCampus => {
+const campuses = Campus.findAll({order: ['name']}).map(foundCampus => {
   return Campus.findAndCountAll({
     where: {id: foundCampus.id},
     include: [Student],
