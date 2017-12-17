@@ -21,12 +21,13 @@ const styles = {
 };
 
 function ImageAvatars(props) {
-  const { classes } = props;
+  const { classes, imgURL } = props;
   return (
     <div className={classes.row}>
       <Avatar
         alt="Adelle Charles"
-        src="https://material-ui-next.com/static/images/uxceo-128.jpg"
+        // src="https://material-ui-next.com/static/images/uxceo-128.jpg"
+        src={imgURL}
         className={classNames(classes.avatar, classes.bigAvatar)}
       />
     </div>
