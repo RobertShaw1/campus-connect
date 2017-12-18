@@ -47,14 +47,14 @@ const styles = theme => ({
 });
 
 function SimpleCard(props) {
-  const { classes } = props;
+  const { classes, name, campus, imgURL } = props;
 
   return (
     <div>
       <Card className={classes.card}>
         <CardHeader
-         title="Firstname LastName"
-         avatar={<ImageAvatar />}
+         title={name}
+         avatar={<ImageAvatar imgURL={imgURL} />}
         />
         <CardContent>
           <section className={classes.actions}>
@@ -63,7 +63,7 @@ function SimpleCard(props) {
                 Campus
               </Typography>
               <Typography type="body1" className={classes.pos}>
-                Apollo
+                {campus}
               </Typography>
             </article>
             <CardActions className={classes.actions}>

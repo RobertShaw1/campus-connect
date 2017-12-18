@@ -10,13 +10,16 @@ const typeDefs = `
     name: String!
     imgURL: String
     description: String
-    students: [Student]!
+    totalStudents: Int
+    students: [Student]
   }
 
   type Student {
     id: ID!
     name: String!
     email: String!
+    phone: String
+    imgURL: String
     campus: Campus
   }
 
@@ -24,7 +27,7 @@ const typeDefs = `
     allCampuses: [Campus!]!
     allStudents: [Student!]!
     singleStudent(id: Int!): Student!
-    singleCampus(id: Int!): Campus!
+    singleCampus(id: Int!): Campus
   }
 
   type Mutation {
@@ -36,8 +39,24 @@ const typeDefs = `
     createStudent(
       name: String!,
       email: String!,
+      phone: String,
+      imgURL: String,
       assignedCampus: String!,
-    ): Student!
+    ): Student
+    updateStudent(
+      id: Int!,
+      name: String,
+      email: String,
+      phone: String,
+      imgURL: String,
+      assignedCampus: String,
+    ): Student
+    updateCampus(
+      id: Int!,
+      name: String,
+      imgURL: String,
+      description: String,
+    ): Campus
     deleteStudent(
       id: Int!
     ): Student!

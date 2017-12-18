@@ -12,7 +12,11 @@ import { goToPage } from '../../actions'
 
 class NavBar extends Component {
   state = {
-    value: 0,
+    value: this.props.type === 'CAMPUSES'
+      ? 1
+      : this.props.type === 'STUDENTS'
+      ? 2
+      : 0,
   };
 
   handleChange = (event, value) => {
@@ -20,7 +24,7 @@ class NavBar extends Component {
   };
 
   render() {
-    const { onClick } = this.props;
+    const { onClick} = this.props;
 
     return (
       <Paper>
@@ -40,6 +44,10 @@ class NavBar extends Component {
   }
 }
 
+const mapState = ({location}) => {
+  const {type} = location;
+  return {type}
+}
 const mapDispatch = {onClick: goToPage};
 
-export default connect(null, mapDispatch)(NavBar);
+export default connect(mapState, mapDispatch)(NavBar);
