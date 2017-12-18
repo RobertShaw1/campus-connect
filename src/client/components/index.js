@@ -11,3 +11,5 @@ export {default as AllCampuses} from './views/AllCampuses';
 export {default as AllStudents} from './views/AllStudents';
 export {default as SingleCampus} from './views/SingleCampus';
 export {default as SingleStudent} from './views/SingleStudent';
+export * from './materials';
+

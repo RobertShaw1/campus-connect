@@ -4,9 +4,10 @@ import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
-import { Button, Welcome } from '@storybook/react/demo';
+// import { Button, Welcome } from '@storybook/react/demo';
 import {
   App,
+  Buttons,
   Home,
   AllCampuses,
   AllStudents,
@@ -33,6 +34,6 @@ storiesOf('Students', module)
   .add('SingleStudent', () => <SingleStudent />)
 
 storiesOf('Button', module)
-  .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
-  .add('with some emoji', () => <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>)
-  .add('with nothing', () => <Button />)
+  // .add('with text', () => <Button onClick={action('clicked')}>Hello Button</Button>)
+  // .add('with some emoji', () => <Button onClick={action('clicked')}>😀 😎 👍 💯</Button>)
+  .add('with add action', () => <Buttons />)
