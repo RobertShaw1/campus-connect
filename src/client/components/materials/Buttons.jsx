@@ -9,17 +9,24 @@ import DeleteIcon from 'material-ui-icons/Delete';
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
+    position: 'fixed',
   },
 });
 
-function FloatingActionButtons(props) {
+const containerStyle = {
+  display: 'flex',
+  justifyContent: 'flex-end',
+  marginRight: '2rem',
+}
+
+function Buttons(props) {
   const { classes } = props;
   return (
-    <div>
+    <div style={containerStyle}>
       <Button fab mini color="primary" aria-label="add" className={classes.button}>
         <AddIcon />
       </Button>
-      <Button fab mini color="accent" aria-label="edit" className={classes.button}>
+      {/* <Button fab mini color="accent" aria-label="edit" className={classes.button}>
         <ModeEditIcon />
       </Button>
       <Button fab disabled aria-label="delete" className={classes.button}>
@@ -27,13 +34,13 @@ function FloatingActionButtons(props) {
       </Button>
       <Button fab mini disabled aria-label="delete" className={classes.button}>
         <DeleteIcon />
-      </Button>
+      </Button> */}
     </div>
   );
 }
 
-FloatingActionButtons.propTypes = {
+Buttons.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FloatingActionButtons);
+export default withStyles(styles)(Buttons);
