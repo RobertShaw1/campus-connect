@@ -8,4 +8,9 @@
 export {default as NavBar} from './NavBar';
 export {default as CampusCard} from './CampusCard';
 export {default as StudentCard} from './StudentCard';
+export {default as Loading} from './Loading';
+export {default as AddButton} from './AddButton';
+export {default as EditButton} from './EditButton';
+export {default as DeleteButton} from './DeleteButton';
+export {default as AddStudentForm} from './AddStudentForm';
 
