@@ -4,9 +4,7 @@ import React from 'react';
 import {compose, graphql, withApollo} from 'react-apollo';
 import gql from 'graphql-tag';
 
-import {StudentCard} from '../materials';
-import Buttons from '../materials/Buttons';
-import Button from 'material-ui/Button/Button';
+import {AddStudentForm, Loading, StudentCard} from '../materials';
 
 const styles = {
   cards: {
@@ -15,29 +13,16 @@ const styles = {
     flexWrap: 'wrap',
     justifyContent: 'flex-start',
   },
-  // container: {
-    // display: 'flex',
-    // flexDirection: 'row',
-    // flexWrap: 'wrap',
-    // justifyContent: 'flex-start',
-  // },
-  // button: {
-  //   height: '100%',
-  //   width: '100%',
-  //   display: 'flex',
-  //   justifyContent: 'flex-end',
-  //   alignItems: 'flex-end',
-  // }
 }
 
 const AllStudents = ({AllStudentsQuery}) => {
   if(AllStudentsQuery.loading) {
-    return <div>Loading...</div>
+    return <Loading />
   } else {
     const {allStudents} = AllStudentsQuery;
     return (
       <div style={styles.container}>
-        <Buttons />
+        <AddStudentForm />
         <div style={styles.cards}>
           {
             allStudents.map(student => {
