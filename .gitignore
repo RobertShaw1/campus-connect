@@ -3,3 +3,4 @@ bin
 yarn.lock
 app.bundle.js
 *.app.bundle.js
+.DS_Store
