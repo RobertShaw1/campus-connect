@@ -6,14 +6,16 @@ import Dialog, {
   DialogContent,
   DialogTitle,
 } from 'material-ui/Dialog';
+import { FormControl, FormHelperText } from 'material-ui/Form';
 import AddButton from './AddButton';
 
 export default class AddStudentForm extends Component {
   state = {
     open: false,
-    success: false,
     name: '',
+    nameError: '',
     email: '',
+    emailError: '',
     phone: '',
     imgURL: '',
   };
@@ -26,7 +28,9 @@ export default class AddStudentForm extends Component {
     this.setState({
       open: false,
       name: '',
+      nameError: '',
       email: '',
+      emailError: '',
       phone: '',
       imgURL: '',
     });
@@ -36,20 +40,71 @@ export default class AddStudentForm extends Component {
     const id = e.target.id;
     const value = e.target.value;
 
-    this.setState({
-      [id]: value,
-    })
+    const {nameError, emailError} = this.state;
+
+    if(nameError && id === 'name' && value.length >= 2) {
+      this.setState({
+        nameError: '',
+        [id]: value,
+      })
+    } else if(emailError && id === 'email' && value.indexOf('@') > 0) {
+      this.setState({
+        emailError: '',
+        [id]: value,
+      })
+    } else {
+      this.setState({
+        [id]: value,
+      })
+    }
+  }
+
+  validate = () => {
+    const errors = {};
+
+    if(!this.state.name) {
+      errors.present = true;
+      errors.nameError = 'Name is required';
+    }
+    
+    if(this.state.name && this.state.name.length < 2) {
+      errors.present = true;
+      errors.nameError = 'Name must be at least 2 characters'
+    }
+    
+    if(!this.state.email) {
+      errors.present = true;
+      errors.emailError = 'Email is required';
+    }
+
+    if(this.state.email.indexOf('@') === -1) {
+      errors.present = true;
+      errors.emailError = 'Please enter a valid email'
+    }
+
+    if(errors.present){
+      this.setState({...this.state, ...errors})
+    }
+
+    return errors;
   }
 
   onSubmit = (e) => {
-    const data = {...this.state}
-    delete data.open
-    alert(`Successfully added new student ${this.state.name}!`)
-    this.setState({open: false})
+    const errors = this.validate();
+
+    if(errors.present) {
+      return;
+    } else {
+      const {name, email, phone, imgURL} = this.state;
+      const data = {name, email, phone, imgURL};
+      alert(`Successfully added new student ${name}!`)
+      this.handleCancel();
+    }
   }
 
 
   render() {
+    const {nameError, emailError} = this.state;
     return (
       <div>
         <AddButton onClick={this.handleClickOpen} />
@@ -61,14 +116,28 @@ export default class AddStudentForm extends Component {
           <DialogTitle id="form-dialog-title">New Student Form</DialogTitle>
           <DialogContent>
             <TextField
-              autoFocus
+              autoFocus={
+                nameError
+                ? true
+                : true
+              }
               margin="dense"
               id="name"
-              label="Name"
+              helperText={
+                nameError
+                ? nameError
+                : null
+              }
+              error={
+                nameError
+                ? true
+                : false
+              }
               type="text"
               required
               onChange={this.onChange}
               fullWidth
+              label="Name"
             />
             <TextField
               margin="dense"
@@ -78,6 +147,23 @@ export default class AddStudentForm extends Component {
               required
               onChange={this.onChange}
               fullWidth
+              autoFocus={
+                nameError
+                ? false
+                : emailError
+                ? true
+                : false
+              }
+              helperText={
+                emailError
+                ? emailError
+                : null
+              }
+              error={
+                emailError
+                ? true
+                : false
+              }
             />
             <TextField
               margin="dense"
