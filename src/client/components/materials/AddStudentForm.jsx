@@ -6,7 +6,6 @@ import Dialog, {
   DialogContent,
   DialogTitle,
 } from 'material-ui/Dialog';
-import { FormControl, FormHelperText } from 'material-ui/Form';
 import AddButton from './AddButton';
 
 export default class AddStudentForm extends Component {
