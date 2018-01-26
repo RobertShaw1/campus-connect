@@ -115,11 +115,7 @@ export default class AddStudentForm extends Component {
           <DialogTitle id="form-dialog-title">New Student Form</DialogTitle>
           <DialogContent>
             <TextField
-              autoFocus={
-                nameError
-                ? true
-                : true
-              }
+              autoFocus
               margin="dense"
               id="name"
               helperText={
@@ -146,13 +142,6 @@ export default class AddStudentForm extends Component {
               required
               onChange={this.onChange}
               fullWidth
-              autoFocus={
-                nameError
-                ? false
-                : emailError
-                ? true
-                : false
-              }
               helperText={
                 emailError
                 ? emailError
