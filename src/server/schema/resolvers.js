@@ -21,7 +21,7 @@ module.exports = {
   Query: {
     allCampuses: () => campuses,
     allStudents: () => students,
-    singleStudent: (_, {id}) => Student.findById(id),
+    singleStudent: (_, {id}) => Student.findById(id, {include: [Campus]}),
     singleCampus: (_, {id}) => Campus.findAndCountAll({
       where: {id},
       include: [Student],
@@ -68,4 +68,5 @@ module.exports = {
       })
     }
   },
+
 };
